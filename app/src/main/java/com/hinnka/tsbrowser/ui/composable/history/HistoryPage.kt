@@ -170,11 +170,11 @@ fun HistoryPage() {
 
 @Composable
 fun DateItemOrNull(lazyPagingItems: LazyPagingItems<History>, index: Int) {
-    val item = lazyPagingItems.getAsState(index).value ?: return
+    val item = lazyPagingItems[index] ?: return
     val canShow = if (index == 0) {
         true
     } else {
-        val prevItem = lazyPagingItems.getAsState(index - 1).value ?: return
+        val prevItem = lazyPagingItems[index - 1] ?: return
         !(prevItem.date isSameDay item.date)
     }
     if (canShow) {

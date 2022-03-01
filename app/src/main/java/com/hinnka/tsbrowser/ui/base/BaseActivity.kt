@@ -16,7 +16,7 @@ open class BaseActivity : AppCompatActivity() {
     private val requestCode = AtomicInteger()
     private val callbackMap = mutableMapOf<Int, (resultCode: Int, data: Intent?) -> Unit>()
 
-    lateinit var permissionLauncher: ActivityResultLauncher<Array<out String>>
+    lateinit var permissionLauncher: ActivityResultLauncher<Array<String>>
     var permissionCallback: (Map<String, Boolean>) -> Unit = {}
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -32,7 +32,7 @@ open class BaseActivity : AppCompatActivity() {
             permissionCallback = {
                 continuation.resume(it)
             }
-            permissionLauncher.launch(permissions)
+            permissionLauncher.launch(arrayOf(*permissions))
         }
     }
 

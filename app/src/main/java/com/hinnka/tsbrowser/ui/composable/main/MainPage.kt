@@ -64,11 +64,11 @@ fun Welcome() {
         visible = showSecret,
         enter = fadeIn() + slideInVertically(
             initialOffsetY = { fullHeight -> fullHeight },
-            spring(stiffness = 250f)
+            animationSpec = spring(stiffness = 250f)
         ),
         exit = fadeOut() + slideOutVertically(
             targetOffsetY = { fullHeight -> fullHeight },
-            spring(stiffness = 250f)
+            animationSpec = spring(stiffness = 250f)
         )
     ) {
         TSBackHandler(onBack = {}) {
